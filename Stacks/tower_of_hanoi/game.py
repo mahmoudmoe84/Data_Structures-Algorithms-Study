@@ -50,21 +50,21 @@ while right_stack.get_size() != num_disks:
   print("\n\n\n...Current Stacks...")
   for stack in stacks:
     stack.print_items()
-    while True:
-      print("\nWhich stack do you want to move from?\n")
-      from_stack = get_input()
-      print("\nWhich stack do you want to move to?\n")
-      to_stack = get_input()
-      if from_stack.get_size == 0:
-        print("\n\nInvalid Move. Try Again")
+  while True:
+    print("\nWhich stack do you want to move from?\n")
+    from_stack = get_input()
+    print("\nWhich stack do you want to move to?\n")
+    to_stack = get_input()
+    if from_stack.get_size() == 0:
+      print("\n\nInvalid Move. Try Again")
+    
+    elif to_stack.get_size() == 0 or to_stack.peek()>from_stack.peek():
+      disk = from_stack.pop ()
+      to_stack.push(disk)
+      num_user_moves += 1 
+      break
+    else:
+      print("\n\nInvalid Move. Try Again")
       
-      elif to_stack.get_size() == 0 or to_stack.peek()>from_stack.peek():
-        disk = from_stack.pop()
-        to_stack.push(disk)
-        num_user_moves += 1
-        break
-      else:
-        print("\n\nInvalid Move. Try Again")
-        
 print(f"\n\nYou completed the game in {num_user_moves} moves, and the optimal number of moves is {num_optimal_moves}")
 
